@@ -15,4 +15,5 @@ export class AppService {
   getRepositoryOrStarred(user: string, type: string): Observable<any> {
     return this.http.get<any>(`https://api.github.com/users/${user}/${type}`);
   }
+
 }
