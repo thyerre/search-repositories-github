@@ -1,5 +1,5 @@
-import { Items } from './../../app-interface';
 import { Component, Input } from '@angular/core';
+import { Items } from 'src/app/app-interface';
 
 @Component({
   selector: 'app-list-items',
@@ -10,4 +10,5 @@ export class ListItemsComponent {
 
   @Input() items: Items[] = [];
   @Input() title: string = "";
+
 }
