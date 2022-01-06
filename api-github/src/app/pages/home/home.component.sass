@@ -1,0 +1,49 @@
+.content
+    background-color: #f8f9fa
+    width: 100%
+    min-height: 100vh
+    display: flex
+    flex-direction: column
+
+    .content-middler
+        flex: 1
+        padding: 40px
+
+    .footer
+        height: 80px
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: center
+
+.content-search
+    display: flex
+    flex-direction: row-reverse
+
+.content-form
+      display: flex
+      flex-direction: row
+
+
+// ---------------------- CSS MOBILE ---------------------
+@media ( max-width: 550px)
+    form
+        width: 100%
+
+        .content-form
+            flex-direction: column
+            width: 100%
+
+        .content-btn
+            display: flex
+            flex-direction: row
+            justify-content: flex-end
+
+    .content
+
+      .content-middler
+          padding: 0px
+
+
+
+

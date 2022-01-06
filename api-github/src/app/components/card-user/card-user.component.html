@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="card" style="width: 18rem;" *ngIf="user.name">
+        <img [src]="user.avatar_url" class="card-img-top" alt="foto de perfil">
+        <div class="card-body">
+            <h5 class="card-title">{{user.name}}</h5>
+            <p class="card-text">{{user.location}}</p>
+            <div class="btn-github">
+                <a [href]="user.html_url" class="btn btn-primary">Visitar github</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="content">
+        <div class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="">{{title}}</a>
+                <div class="collapse navbar-collapse content-search">
+                    <form class="form-inline my-2 my-lg-0">
+                        <div class="content-form">
+                            <div class="content-input">
+                                <app-input-search (emiterTextInput)="reciverTextSearch($event)"></app-input-search>
+                            </div>
+                            <div class="content-btn">
+                                <app-button-search name="Repository" url="repos" (emiterActionButton)="reciverButtonSearch($event)"></app-button-search>
+                                <app-button-search name="Starred" url="starred" (emiterActionButton)="reciverButtonSearch($event)"></app-button-search>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="content-middler">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <app-card-user [user]="user"></app-card-user>
+                    </div>
+                    <div class="col-sm-8">
+                        <app-list-items [items]="items" [title]="listName"></app-list-items>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div>
+                <small>&copy;Compass-test 2022</small>
+            </div>
+        </div>
+    </div>
+</div>
