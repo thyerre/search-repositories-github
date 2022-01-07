@@ -1,8 +1,8 @@
 <div class="content">
-    <div class="card" style="width: 18rem;" *ngIf="user.name">
+    <div class="card" style="width: 18rem;" *ngIf="user.name || user.login">
         <img [src]="user.avatar_url" class="card-img-top" alt="foto de perfil">
         <div class="card-body">
-            <h5 class="card-title">{{user.name}}</h5>
+            <h5 class="card-title">{{user.name ? user.name : user.login}}</h5>
             <p class="card-text">{{user.location}}</p>
             <div class="btn-github">
                 <a [href]="user.html_url" class="btn btn-primary">Visitar github</a>

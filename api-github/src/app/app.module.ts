@@ -10,6 +10,7 @@ import { ListItemsComponent } from './components/list-items/list-items.component
 import { CardUserComponent } from './components/card-user/card-user.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './pages/home/home.component';
     ListItemsComponent,
     CardUserComponent,
     HomeComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

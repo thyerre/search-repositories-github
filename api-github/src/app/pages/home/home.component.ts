@@ -12,6 +12,7 @@ import { Title, Meta } from '@angular/platform-browser';
 export class HomeComponent implements OnInit {
 
   title: string = "API Github";
+  error: string = '';
   user: User = {} as User;
   items: Items[] = [];
   listName: string = "";
@@ -36,22 +37,41 @@ export class HomeComponent implements OnInit {
 
   searchUser(user: string): void {
     this.items = [];
-    this.appService.getInfoUserByUser(user).subscribe((user: User) => {
-      this.user = user;
-      this.search("repos");
-      this.listName = "Repository";
-      this.setMetaTagUser(user);
-    });
+    this.appService.getInfoUserByUser(user).subscribe({
+      next: (user: User) => {
+        this.user = user;
+        this.search("repos");
+        this.listName = "Repository";
+        this.setMetaTagUser(user);
+      },
+      error: () => {
+        this.setError(`Não foi possível encontrar o usuário ${user}!`);
+        this.user = {} as User;
+      }
+    }
+    );
   }
 
   search(type: string): void {
-    this.appService.getRepositoryOrStarred(this.user.login, type).subscribe((items: Items[]) => {
-      this.items = items;
-    });
+    if (this.user.login !== undefined) {
+      this.appService.getRepositoryOrStarred(this.user.login, type).subscribe({
+        next: (items: Items[]) => {
+          if (items.length > 0) {
+            this.clearError();
+            this.items = items;
+          } else {
+            this.setError(`Não foi encontrado repositórios para esse usuário!`);
+            this.items = [];
+          }
+        }
+      }
+      );
+    }
   }
 
   reciverTextSearch(text: string): void {
     if (text) {
+      this.clearError();
       this.searchUser(text);
     }
   }
@@ -68,6 +88,14 @@ export class HomeComponent implements OnInit {
     this.metaService.addTags([
       { name: 'description', content: `github user ${user.name}` },
     ]);
+  }
+
+  clearError() {
+    this.error = "";
+  }
+
+  setError(text: string) {
+    this.error = text;
   }
 
 }
