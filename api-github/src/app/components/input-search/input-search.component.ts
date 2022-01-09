@@ -8,12 +8,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class InputSearchComponent {
 
   typingTimer: any = null;
-  model: string = "";
-  @Output() emiterTextInput = new EventEmitter();
+  search: string = "";
+  @Output() searchChange = new EventEmitter<string>();
 
   emiterAction(text: string): void {
     clearTimeout(this.typingTimer);
-    this.typingTimer = setTimeout(() => this.emiterTextInput.emit(text), 1000);
+    this.typingTimer = setTimeout(() => this.searchChange.emit(text), 1000);
   }
 
 }

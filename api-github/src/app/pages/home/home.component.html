@@ -7,7 +7,7 @@
                     <form class="form-inline my-2 my-lg-0">
                         <div class="content-form">
                             <div class="content-input">
-                                <app-input-search (emiterTextInput)="reciverTextSearch($event)"></app-input-search>
+                                <app-input-search (searchChange)="reciverTextSearch($event)"></app-input-search>
                             </div>
                             <div class="content-btn">
                                 <app-button-search name="Repository" url="repos" (emiterActionButton)="reciverButtonSearch($event)"></app-button-search>
