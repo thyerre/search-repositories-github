@@ -4,10 +4,10 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="">{{title}}</a>
                 <div class="collapse navbar-collapse content-search">
-                    <form class="form-inline my-2 my-lg-0">
+                    <form [formGroup]="formSearch" class="form-inline my-2 my-lg-0">
                         <div class="content-form">
                             <div class="content-input">
-                                <app-input-search (searchChange)="reciverTextSearch($event)"></app-input-search>
+                                <app-input [parentForm]="formSearch" nameControl="search"></app-input>
                             </div>
                             <div class="content-btn">
                                 <app-button-search name="Repository" url="repos" (emiterActionButton)="reciverButtonSearch($event)"></app-button-search>

@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InputSearchComponent } from './components/input-search/input-search.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { InputComponent } from './components/input/input.component';
 import { ButtonSearchComponent } from './components/button-search/button-search.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { CardUserComponent } from './components/card-user/card-user.component';
-import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputSearchComponent,
+    InputComponent,
     ButtonSearchComponent,
     ListItemsComponent,
     CardUserComponent,
@@ -27,7 +27,7 @@ import { AlertComponent } from './components/alert/alert.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

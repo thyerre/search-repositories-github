@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Items, User, ValueButton } from 'src/app/app-interface';
 import { AppService } from 'src/app/app.service';
 import { Title, Meta } from '@angular/platform-browser';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -11,21 +12,32 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
+  typingTimer: any = null;
   title: string = "API Github";
   error: string = '';
   user: User = {} as User;
   items: Items[] = [];
   listName: string = "";
+  formSearch: FormGroup = {} as FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private appService: AppService,
     private titleService: Title,
-    private metaService: Meta
+    private metaService: Meta,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
+    this.initForm();
     this.getUserParamUrl();
+    this.searchUserInput();
+  }
+
+  initForm(): void {
+    this.formSearch = this.formBuilder.group({
+      search: new FormControl(''),
+    });
   }
 
   getUserParamUrl(): void {
@@ -69,11 +81,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  reciverTextSearch(text: string): void {
-    if (text) {
-      this.clearError();
-      this.searchUser(text);
-    }
+  searchUserInput(): void {
+    this.formSearch.get('search')?.valueChanges.subscribe((user: string) => {
+      clearTimeout(this.typingTimer);
+      this.typingTimer = setTimeout(() => this.searchUser(user), 1000);
+    })
   }
 
   reciverButtonSearch({ url, name }: ValueButton): void {
